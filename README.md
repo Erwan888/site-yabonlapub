@@ -6,6 +6,7 @@
 ## Une fois cette commande terminée, se placer dans le dossier créé pour le projet et faire :
 ```git remote add origin https://github.com/Erwan888/site-yabonlapub.git```
 
+Puis :
 ```git rm --cached bin -r
 git rm --cached composer.json
 git rm --cached composer.lock

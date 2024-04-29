@@ -7,7 +7,7 @@
 ```git remote add origin https://github.com/Erwan888/site-yabonlapub.git \n
 git checkout main```
 
-### Puis :
+## Puis :
 ```git rm --cached bin -r
 git rm --cached composer.json
 git rm --cached composer.lock
@@ -20,5 +20,5 @@ git rm --cached phpunit.xml.dist
 git rm --cached importmap.php
 git rm --cached migrations/ -r```
 
-### Vous pourrez ensuite faire votre pull :
+## Vous pourrez ensuite faire votre pull :
 ```git pull```

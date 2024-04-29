@@ -1,4 +1,4 @@
-# site-yabonlapub
+# Tuto pour créer le projet et pouvoir travailler dessus
 
 ## Commande pour créer le projet :
 ```symfony new Yabonlapub --version="7.0.*" --webapp```

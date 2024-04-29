@@ -8,7 +8,7 @@
 git checkout main`
 
 ## Puis :
-``git rm --cached bin -r
+```git rm --cached bin -r
 git rm --cached composer.json
 git rm --cached composer.lock
 git rm --cached compose.override.yaml
@@ -18,7 +18,7 @@ git add config/packages/security.yaml
 git rm --cached symfony.lock
 git rm --cached phpunit.xml.dist
 git rm --cached importmap.php
-git rm --cached migrations/ -r``
+git rm --cached migrations/ -r```
 
 ## Vous pourrez ensuite faire votre pull :
 ```git pull```

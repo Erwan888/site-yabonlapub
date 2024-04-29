@@ -4,8 +4,8 @@
 ```symfony new Yabonlapub --version="7.0.*" --webapp```
 
 ## Une fois cette commande terminée, se placer dans le dossier créé pour le projet et faire :
-```git remote add origin https://github.com/Erwan888/site-yabonlapub.git```.
-```git checkout main```
+```git remote add origin https://github.com/Erwan888/site-yabonlapub.git
+git checkout main```
 
 ### Puis :
 ```git rm --cached bin -r

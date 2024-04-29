@@ -1,0 +1,19 @@
+<div id="header" class="header">
+    <a href="{{ path("app_home_page")}}"><img src={{asset('/img/logo2.png')}} alt="logo new music" width="80px"/></a>
+    <a href="{{ path("app_home_page")}}"><h1>YvStats</h1></a>
+    <div>
+        <h2><a href="{{ path("spotify_authenticate_default")}}">Most Listened</a></h2>
+    </div>
+    {% if app.user %}
+        <div>
+        {% if is_granted('ROLE_ARTIST') %}
+            <a href="{{ path("app_create_music")}}"><img src={{asset('/img/plus.png')}} alt="logo new music" width="50px"/></a>
+        {% endif %}
+            <a href="{{ path("app_modif_user")}}"><img src={{asset('/img/bonhomme.png')}} alt="logo profil" width="50px"/></a>
+        </div>
+    {% else %}
+        <div>
+            <a href="{{ path("app_login")}}"><img src={{asset('/img/bonhomme.png')}} alt="logo connexion" width="50px"/></a>
+        </div>
+    {% endif %}
+</div>

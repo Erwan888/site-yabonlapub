@@ -6,6 +6,7 @@ body {
     color: #111;
     padding: 0.5%;
     overflow: hidden;
+    text-align: center;
 }
 
 button:hover {

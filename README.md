@@ -1,7 +1,9 @@
 # Tuto pour créer le projet et pouvoir travailler dessus
 
 ## Commande pour créer le projet :
-```symfony new Yabonlapub --version="7.0.*" --webapp```
+```
+symfony new Yabonlapub --version="7.0.*" --webapp
+```
 
 ## Une fois cette commande terminée, se placer dans le dossier créé pour le projet et faire :
 ```
@@ -28,4 +30,6 @@ git checkout main
 ```
 
 ## Vous pourrez ensuite faire votre pull :
-```git pull```
+```
+git pull
+```

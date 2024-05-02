@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset("styles/login.css")}}">
+{% endblock %}
+
+{% block title %}Enregistrement - Yabonlapub{% endblock %}
+
+{% block body %}
+{#<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -33,13 +42,13 @@
             padding: 20px;
         }
     </style>
-</head>
+</head>#}
 <body>
    <div style="display: flex; flex-direction: column; min-height: 100vh;">
-    <header>
+    {#<header>
         <div style="display: flex; align-items: center;">
             <div style="display: flex; align-items: center;">
-                <img src="{{ asset('img/logo.png') }}" alt="Logo" style="height: 2em; width: auto; margin-right: 10px;">
+                <img src="{{ asset('img/logo1.png') }}" alt="Logo" style="height: 2em; width: auto; margin-right: 10px;">
                 <h1 style="color: blue;">{% trans %}Yabonlapub{% endtrans %}</h1>
             </div>
 
@@ -60,9 +69,9 @@
                 </div>
             </nav>
         </div>
-    </header>
+    </header>#}
 
- <div style="height: 100px; background-color: #f1f1f1; text-align: center; margin-top: 0px;">
+ <div style="height: 100px; text-align: center; margin-top: 0px;">
     <p style="font-size: 80px; font-weight: bold; margin: 0;">{% trans %}Vous jouez, vous soutenez{% endtrans %}</p>
 </div>
     <main>
@@ -117,3 +126,4 @@
 </body>
 </div>
 </html>
+{% endblock %}

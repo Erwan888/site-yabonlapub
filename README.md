@@ -6,7 +6,6 @@
 ## Une fois cette commande terminée, se placer dans le dossier créé pour le projet et faire :
 ```
 git remote add origin https://github.com/Erwan888/site-yabonlapub.git
-git checkout main
 ```
 
 ## Puis :
@@ -21,6 +20,11 @@ git rm --cached symfony.lock
 git rm --cached phpunit.xml.dist
 git rm --cached importmap.php
 git rm --cached migrations/ -r
+```
+
+## Vous pouvez maintenant vous placer sur la branche principale du projet (main) :
+```
+git checkout main
 ```
 
 ## Vous pourrez ensuite faire votre pull :

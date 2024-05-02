@@ -19,10 +19,30 @@ button:hover {
     align-items: center;
 }
 
-.header div {
+.header a {
+    margin-left: auto;
+}
+
+.header a div {
     margin-left: auto;
     text-align: center;
     line-height: 0;
+}
+
+#left{
+    margin-left: 0;
+    display: flex;
+}
+
+#vertical {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#vertical span {
+    margin-top: -15px;
 }
 
 a {

@@ -11,10 +11,10 @@
     <p style="font-size: 80px; font-weight: bold; margin: 0;">{% trans %}Vous jouez, vous soutenez{% endtrans %}</p>
 </div>
 <main>
-    <img src="{{ asset('img/main.png') }}" alt="Logo" style="height: 18em; width: auto;">
+    {#<img src="{{ asset('img/main.png') }}" alt="Logo" style="height: 18em; width: auto;">#}
 </main>
 <div class="container">
-    <div class="box" style="background-color: #58889C;">
+    <div class="box side-box" style="background-color: #58889C;">
         <img src="{{ asset('img/manette.png') }}" alt="Logo" style="height: 6em; width: auto;">
         <p style="margin-left: 10px; color: white;">
             {% trans %}Particulier.<br>Vous désirez financer<br> vos associations favorites<br>sans débourser 1 centime{% endtrans %}
@@ -22,7 +22,7 @@
             <a href="#" style="color:yellow; font-weight: bold;">{{ 'Entrez'|trans }}</a>
         </p>
     </div>
-    <div class="box" style="background-color: #D1B995;">
+    <div class="box middle-box" style="background-color: #D1B995;">
         <img src="{{ asset('img/assoc.png') }}" alt="Logo" style="height: 6em; width: auto;">
         <p style="margin-left: 10px; color: white;">
             {% trans %}Association.<br>Vous désirez bénéficier<br> gratuitement<br>de la manne publicitaire<br>pour financer vos activités{% endtrans %}
@@ -30,7 +30,7 @@
             <a href="#" style="color:yellow; font-weight: bold;">{{ 'Entrez'|trans }}</a>
         </p>
     </div>
-    <div class="box" style="background-color: #1A2632;">
+    <div class="box side-box" style="background-color: #1A2632;">
         <img src="{{ asset('img/publicite.png') }}" alt="Logo" style="height: 6em; width: auto;">
         <p style="margin-left: 10px; color: white;">
             {% trans %}

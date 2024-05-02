@@ -1,28 +1,31 @@
-<div id="header" class="header">
-    <a href="{{ path("app_accueil")}}"><img src={{asset('/img/logo1.png')}} alt="logo Yabonlapub" width="60px"/></a>
-    <a href="{{ path("app_accueil")}}"><h1>Yabonlapub</h1></a>
-    <div>
-        <a href=""><img src={{asset('/img/proprietaire.png')}} alt="logo profil" width="50px"/></a>
-        <a href="{{ path("app_accueil")}}"><h3>Particulier</h3></a>
-    </div>
-    <div>
-        <a href=""><img src={{asset('/img/association.png')}} alt="logo profil" width="50px"/></a>
-        <a href="{{ path("app_accueil")}}"><h3>Association</h3></a>
-    </div>
-    <div>
-        <a href=""><img src={{asset('/img/mecene.png')}} alt="logo profil" width="50px"/></a>
-        <a href="{{ path("app_accueil")}}"><h3>Mécène</h3></a>
-    </div>
+<div class="header">
+    <a id="left" href="{{ path("app_accueil")}}"><img src={{asset('/img/logo1.png')}} alt="logo Yabonlapub" width="80px" height="80px"/>
+    {#<a href="{{ path("app_accueil")}}"><h1>Yabonlapub</h1></a>#}
+    <span id="vertical"><span id="wb_Text1" style="color:#000000;font-family:Impact;font-size:48px;letter-spacing:-2px;">Y'a bon</span>
+    <span id="wb_Text2" style="color:#8EC21F;font-family:Impact;font-size:40px;letter-spacing:-2px;margin-left:10px;">La pub !</span>
+    <span id="wb_Text3" style="color:#000000;font-family:Arial;font-size:11px;margin-top:0">Le marketing qui fait du bien !</span></span></a>
+    <a href=""><div>
+        <img src={{asset('/img/proprietaire.png')}} alt="logo profil" width="50px"/>
+        <h3>Particulier</h3>
+    </div></a>
+    <a href=""><div>
+        <img src={{asset('/img/association.png')}} alt="logo profil" width="50px"/>
+        <h3>Association</h3>
+    </div></a>
+    <a href=""><div>
+        <img src={{asset('/img/mecene.png')}} alt="logo profil" width="50px"/>
+        <h3>Mécène</h3>
+    </div></a>
     {% if app.user %}
-        <div>
-            <a href=""><img src={{asset('/img/bonhomme.png')}} alt="logo profil" width="50px"/></a>
-            <a href="{{ path("app_accueil")}}"><h3>Particulier</h3></a>
-        </div>
+        <a href=""><div>
+            <img src={{asset('/img/bonhomme.png')}} alt="logo profil" width="50px"/>
+            <h3>Particulier</h3>
+        </div></a>
     {% else %}
-        <div>
-            <a href="{{ path("inscription")}}"><img src={{asset('/img/bonhomme1.png')}} alt="logo connexion" width="50px"/></a>
-            <a href="{{ path("inscription")}}"><h3>Connexion</h3></a>
-        </div>
+        <a href="{{ path("inscription")}}"><div>
+            <img src={{asset('/img/bonhomme1.png')}} alt="logo connexion" width="50px"/>
+            <h3>Connexion</h3>
+        </div></a>
     {% endif %}
 </div>
 <hr>

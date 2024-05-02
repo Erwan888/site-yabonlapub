@@ -1,20 +1,119 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% trans %}Yabonlapub Particulier Association{% endtrans %}</title>
+    <style>
+        /* Ajoutez vos styles CSS personnalisés ici */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+       
+        main {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        .column {
+            background-color: #f9f9f9;
+            padding: 20px;
+            text-align: center;
+        }
+        footer {
+    background-color: #DBA17B;
+    padding: 20px;
+    text-align: center;
+    weight: bold;
+}
+        nav {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+   <div style="display: flex; flex-direction: column; min-height: 100vh;">
+    <header>
+        <div style="display: flex; align-items: center;">
+            <div style="display: flex; align-items: center;">
+                <img src="{{ asset('img/logo.png') }}" alt="Logo" style="height: 2em; width: auto; margin-right: 10px;">
+                <h1 style="color: blue;">{% trans %}Yabonlapub{% endtrans %}</h1>
+            </div>
 
-{% block title %}Hello AccueilController!{% endblock %}
+            <nav style="background-color: black; display: flex; justify-content: space-between; align-items: center; flex-grow: 1;">
+                <ul style="margin: 0; padding: 0; list-style-type: none; display: flex; align-items: center;">
+                    <li style="margin-right: 10px;"><img src="{{ asset('img/proprietaire.png') }}" alt="Logo" style="height: 1em; width: auto;"></li>
+                    <li style="margin-right: 10px;"><a href="#" style="color: white; text-decoration: none;">{{ 'Particulier'|trans }}</a></li>
+                    <li style="margin-right: 10px;"><img src="{{ asset('img/association.png') }}" alt="Logo" style="height: 1em; width: auto; margin-left: 10px;"></li>
+                    <li style="margin-right: 10px;"><a href="#" style="color: white; text-decoration: none;">{{ 'Association'|trans }}</a></li>
+                    <li style="margin-right: 10px;"><img src="{{ asset('img/mecene.png') }}" alt="Logo" style="height: 1em; width: auto; margin-left: 20px;"></li>
+                    <li style="margin-right: 10px;"><a href="#" style="color: white; text-decoration: none;">{{ 'Mécène'|trans }}</a></li>
+                    <li style="margin-right: 10px;"><img src="{{ asset('img/visite.png') }}" alt="Logo" style="height: 1.2em; width: auto; margin-left: 20px;"></li>
+                    <li style="margin-right: 10px;"><a href="#" style="color: white; text-decoration: none;">{{ 'Simple visite'|trans }}</a></li>
+                </ul>
+                <div style="margin-left: auto;">
+                    <img src="{{ asset('img/connexion.png') }}" alt="Logo" style="height: 1.2em; width: auto; margin-right: 10px;">
+                    <a href="{{ path('connexion') }}" style="color: white; text-decoration: none;">{{ 'Connexion'|trans }}</a>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello ! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>D:/Documents/GitHub/Yabonlapub/src/Controller/AccueilController.php</code></li>
-        <li>Your template at <code>D:/Documents/GitHub/Yabonlapub/templates/accueil/index.html.twig</code></li>
-    </ul>
+ <div style="height: 100px; background-color: #f1f1f1; text-align: center; margin-top: 0px;">
+    <p style="font-size: 80px; font-weight: bold; margin: 0;">{% trans %}Vous jouez, vous soutenez{% endtrans %}</p>
 </div>
-{% endblock %}
+    <main>
+        <img src="{{ asset('img/main.png') }}" alt="Logo" style="height: 18em; width: auto;">
+    </main>
+    <div style=" background-color: #f1f1f1; text-align: center; margin-top: 0px; display: flex; justify-content: space-around;">
+    <div class="column" style="background-color: #58889C;">
+        <div style="display: flex; align-items: center;">
+        <img src="{{ asset('img/manette.png') }}" alt="Logo" style="height: 6em; width: auto;">
+        <p style="margin-left: 10px; color: white;">
+            {% trans %}Particulier.<br>Vous désirez financer<br> vos associations favorites<br>sans débourser 1 centime{% endtrans %}
+            <br>
+            <a href="#" style="color:yellow; font-weight: bold;">{{ 'Entrez'|trans }}</a>
+
+        </p>
+     </div>
+    </div>
+    <div class="column" style="background-color: #D1B995;">
+        <div style="display: flex; align-items: center;">
+        <img src="{{ asset('img/assoc.png') }}" alt="Logo" style="height: 6em; width: auto;">
+        <p style="margin-left: 10px; color: white;">
+            {% trans %}Association.<br>Vous désirez bénéficier<br> gratuitement<br>de la manne publicitaire<br>pour financer vos activités{% endtrans %}
+            <br>
+            <a href="#" style="color:yellow; font-weight: bold;">{{ 'Entrez'|trans }}</a>
+
+        </p>
+     </div>
+    </div>
+    <div class="column" style="background-color: #1A2632;">
+        <div style="display: flex; align-items: center;">
+        <img src="{{ asset('img/publicite.png') }}" alt="Logo" style="height: 6em; width: auto;">
+        <p style="margin-left: 10px; color: white;">
+            {% trans %}
+        Entreprise.<br>
+        Vous désirez être vue<br>
+        tout en bénéficiant<br>
+        de 40%% à 66%%<br>
+        de déductions d'impôts
+        {% endtrans %}
+            <br>
+            <a href="#" style="color:yellow; font-weight: bold;">{{ 'Entrez'|trans }}</a>
+
+        </p>
+     </div>
+    </div>
+</div>
+<footer style="margin-top: 20px;">
+    <div style="background-color: #E7820C; display: inline-block;">
+    <p><a href="#" style="color:black; font-weight: bold; text-decoration: none;">{{ 'SIMPLE VISITE'|trans }}</a></p>
+    </div>
+</footer>
+</body>
+</div>
+</html>

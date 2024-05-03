@@ -40,11 +40,9 @@ git commit -a -m "commit pre-switch"
 git checkout main
 ```
 
-## 6) Vous pouvez récupérer vos dossiers précédemment déplacé et les remettre sur
+## 6) Vous pouvez récupérer vos dossiers précédemment déplacés et les remettre dans le projet. Normalement, le fichier security.yaml est sensé être doublé, ignorer celui que vous rajouter (garder celui que vous avez récupéré du projet Git).
 
 ## 7) Vous pourrez ensuite faire votre pull :
 ```
 git pull
 ```
-
-## 8) 

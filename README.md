@@ -11,7 +11,8 @@ git remote add origin https://github.com/Erwan888/site-yabonlapub.git
 ```
 
 ## Puis :
-```git rm --cached bin -r
+```
+git rm --cached bin -r
 git rm --cached composer.json
 git rm --cached composer.lock
 git rm --cached compose.override.yaml
@@ -22,6 +23,14 @@ git rm --cached symfony.lock
 git rm --cached phpunit.xml.dist
 git rm --cached importmap.php
 git rm --cached migrations/ -r
+```
+
+Maintenant, vous devez déplacer la liste des fichiers supprimer du git hors du projet pour pouvoir y avoir accès après avoir changé de branche.
+Déplacez-les donc dans un dossier sur votre bureau par exemple.
+
+Faites un commit pour sauvegarder vos modifications :
+```
+git commit -a -m "commit pre-switch"
 ```
 
 ## Vous pouvez maintenant vous placer sur la branche principale du projet (main) :

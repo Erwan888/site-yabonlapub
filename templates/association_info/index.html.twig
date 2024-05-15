@@ -1,14 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% form_theme form 'bootstrap_4_layout.html.twig' %} 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/association_form_register.css') }}">
+{% endblock %}
 
 {% block title %}Association {% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="form-container">
-            {{ form_start(form) }} 
-                {{ form_errors(form) }} 
+            {{ form_start(form) }}
+                {{ form_errors(form) }}
 
                 <div class="form-group">
                     {{ form_label(form.name) }}
@@ -66,12 +68,10 @@
 
                 <button type="submit" id="creer_annonce" class="btn btn-primary">Créer</button>
             {{ form_end(form) }}
-            
-            <!-- Lien de retour à l'accueil avec un bouton stylisé Bootstrap --> 
+
             <a href="{{ path('app_accueil') }}">
                 <button class="btn btn-secondary mt-2">Retourner à l'accueil</button>
             </a>
         </div>
     </div>
-    
 {% endblock %}

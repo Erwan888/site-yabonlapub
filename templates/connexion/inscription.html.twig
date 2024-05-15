@@ -1,252 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration Form</title>
-    <style>
-    html {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(to bottom, #fbd3e9, #cccccc); /* Gradient rose à violet */
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-}
+{% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset("styles/login.css")}}">
+{% endblock %}
 
-.container {
-    width: 390px;
-    background-color: #fff;
-    border-radius: 10px; /* Angles arrondis */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 24px;
-    margin: 50px auto;
-    display: flex;
-    flex-direction: column;
-}
+{% block title %}Inscription - Yabonlapub{% endblock %}
 
-h1 {
-    text-align: center;
-    margin-bottom: 24px;
-    color: #4d4d4d; /* Couleur du texte assombrie */
-}
+{% block body %}
+{{ form_start(form) }}
+    <h3>Créer un compte</h3>
+    {{ error }}
+    {% if error %}
+        <p>{{ error }}<p>
+    {% endif %}
+    <table>
+        <tr>
+            <td class="titre">
+            <label>Identifiant</label>
+            </td>
+            <td class="value">
+            {{ form_widget(form.login, {'attr': {'required': true, 'placeholder': 'Identifiant*', 'class': 'form-control'}}) }}
+            {{ form_errors(form.login) }}
+            </td>
+        </tr>
 
-label {
-    display: block;
-    margin-bottom: 8px;
-    color: #666; /* Couleur du texte légèrement plus claire */
-}
+        <tr>
+            <td class="titre">
+            <label>Mot de passe</label>
+            </td>
+            <td class="value">
+            {{ form_widget(form.plainPassword, {'attr': {'required': true, 'placeholder': 'Mot de passe*', 'class': 'form-control'}}) }}        
+            {{ form_errors(form.plainPassword) }}
+            </td>
+        </tr>
 
+        <tr>
+            <td class="titre">
+            <label>Confirmation du mot de passe</label>
+            </td>
+            <td class="value">
+            {{ form_widget(form.confirmPassword, {'attr': {'required': true, 'placeholder': 'Mot de passe*', 'class': 'form-control'}}) }}        
+            {{ form_errors(form.confirmPassword) }}
+            </td>
+        </tr>
 
+        {#<tr>
+            <td class="titre">
+            <label>Nom</label>
+            </td>
+            <td class="value">
+            {{ form_widget(form.nom, {'attr': {'placeholder': 'Nom', 'class': 'form-control'}}) }}
+            {{ form_errors(form.nom) }}
+            </td>
+        </tr>
 
-#suggestions {
-    max-height: 200px;
-    overflow-y: auto;
-    border: 1px solid #ccc;
-    border-radius: 5px; /* Ajouter des coins arrondis */
-    background-color: #fff; /* Fond blanc */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre légère */
-    padding: 5px;
-    cursor: pointer;
-}
+        <tr>
+            <td class="titre">
+            <label>Prénom</label>
+            </td>
+            <td class="value">
+            {{ form_widget(form.prenom, {'attr': {'placeholder': 'Prénom', 'class': 'form-control'}}) }}
+            {{ form_errors(form.prenom) }}
+            </td>
+        </tr>
 
-
-.suggestion-item {
-    padding: 8px 12px;
-    transition: background-color 0.3s ease; /* Ajouter une transition douce */
-}
-
-
-.suggestion-item:hover {
-    background-color: #f0f0f0; /* Couleur de fond au survol */
-}
-
-input[type="email"],
-input[type="nom"],
-input[type="prenom"],
-input[type="password"] {
-    width: calc(100% - 20px);
-    padding: 10px; /* Augmentation de la taille du padding */
-    border: 1px solid #ccc;
-    border-radius: 6px; /* Angles arrondis */
-    margin-bottom: 20px; /* Espacement supplémentaire entre les champs */
-    color: #333; /* Couleur du texte assombrie */
-}
-
-input[type="ville"]{
-     width: calc(100% - 20px);
-    padding: 10px; /* Augmentation de la taille du padding */
-    border: 1px solid #ccc;
-    border-radius: 6px; /* Angles arrondis */
-    color: #333; /* Couleur du texte assombrie */
-}
-
-input[type="checkbox"] {
-    margin-right: 8px;
-}
-
-button[type="submit"] {
-    width: 100%;
-    padding: 12px; /* Augmentation de la taille du padding */
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 6px; /* Angles arrondis */
-    cursor: pointer;
-}
-
-button[type="submit"]:hover {
-    background-color: #0056b3; /* Couleur de survol légèrement plus foncée */
-}
-
-a {
-    display: block;
-    text-align: center;
-    margin-top: 20px; /* Espacement supplémentaire en haut */
-    color: #007bff;
-    text-decoration: none;
-}
-</style>
-</head>
-<body>
-    <div class="container">
-        <img src="{{ asset('img/inscription.png') }}" alt="Login Image" style="width: 100px; height: auto; display: block; margin: 0 auto;">
-
-        <form action="#">
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-    <div style="text-align: center; margin-left: 30px;">
-        <label for="nom">Nom</label>
-        <input type="nom" id="nom" name="nom" required style="width: 120px;">
-    </div>
-    <div style="text-align: center; margin-right: 30px;">
-        <label for="prenom">Prénom</label>
-        <input type="prenom" id="prenom" name="prenom" required style="width: 120px;">
-    </div>
-</div>
-            <div style="margin-top: 20px">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-            </div>
-
-            <div style="margin-top: 20px; position: relative;">
-    <label for="ville">Ville</label>
-    <input type="ville" id="ville" name="ville" required>
-</div>
-
-<div id="suggestions" style="display: none; margin-bottom:20px;"></div>
-
-
-            <div style="margin-top: 20px">
-            <label for="password">Mot de passe</label>
-            <input type="password" id="password" name="password" required>
-            </div>
-
-            <div style="margin-top: 20px">
-            <label for="confirmationpassword">Confirmation du mot de passe</label>
-            <input type="password" id="confirmationpassword" name="confirmationpassword" required>
-            </div>
-
-
-           
-            <div style="display: flex; align-items: center; margin-top: 20px">
-            <input type="checkbox" id="terms" name="terms" required>
-            <div style="margin-top: 10px;">
-            <label for="terms">J'accepte les termes et conditions.</label>
-            </div>
-            </div>
-
-            <div style="margin-top: 20px">
-            <button type="submit" formaction="/connexion">Je crée mon compte</button>
-            </div>
-
-        </form>
-    </div>
-</body>
-<script>
-const passwordInput = document.getElementById('password');
-
-// Fonction pour définir la couleur de la bordure du champ de mot de passe en fonction de sa valeur
-function setBorderColor() {
-    if (passwordInput.value.length > 0) {
-        passwordInput.style.borderColor = 'green'; // Définir la couleur de la bordure en vert
-    } else {
-        passwordInput.style.borderColor = ''; // Réinitialiser la couleur de la bordure
-    }
-}
-
-// Écouter les événements de saisie dans le champ de mot de passe
-passwordInput.addEventListener('input', setBorderColor);
-
-const confirmationPasswordInput = document.getElementById('confirmationpassword');
-
-// Fonction pour comparer les valeurs saisies dans les champs de mot de passe
-function comparePasswords() {
-    const password = passwordInput.value;
-    const confirmationPassword = confirmationPasswordInput.value;
-
-    if (password !== confirmationPassword) {
-        confirmationPasswordInput.style.borderColor = 'red';
-    } else {
-        confirmationPasswordInput.style.borderColor = ' green';
-    }
-}
-
-
-// Écouter les événements de saisie dans le champ de confirmation du mot de passe
-confirmationPasswordInput.addEventListener('input', comparePasswords);
-fetch('/img/france.json')
-    .then(response => response.json())
-    .then(data => {
-        const citiesData = data.map(city => city.Nom_commune); // Extraire les noms des communes
-        console.log('Cities data:', citiesData); // Afficher les noms des communes
-
-        const input = document.getElementById('ville');
-        const suggestionsDiv = document.getElementById('suggestions');
-
-        // Fonction pour mettre à jour la liste des suggestions en fonction du texte saisi dans l'input
-        function updateSuggestions(searchText) {
-            suggestionsDiv.innerHTML = ''; // Effacer les anciennes suggestions
-
-            // Filtrer les villes correspondant au texte saisi dans l'input
-            const filteredCities = citiesData.filter(city => city.toLowerCase().startsWith(searchText.toLowerCase()));
-
-            if (filteredCities.length === 0) {
-                    const noResult = document.createElement('div');
-                    noResult.textContent = "Aucune ville n'a été trouvée";
-                    suggestionsDiv.appendChild(noResult);
-            } else {
-            // Ajouter les villes filtrées à la liste des suggestions
-            filteredCities.forEach(city => {
-                const suggestion = document.createElement('div');
-                suggestion.textContent = city;
-                suggestionsDiv.appendChild(suggestion);
-
-                // Ajouter un gestionnaire d'événements de clic à chaque élément de la liste des suggestions
-                suggestion.addEventListener('click', function() {
-                    input.value = city; // Remplir l'input avec le texte de l'élément sur lequel vous avez cliqué
-                    suggestionsDiv.style.display = 'none'; // Masquer la liste des suggestions
-                });
-            });
-            }
-            const searchTextWords = searchText.split(' '); // Séparer le texte saisi en mots
-            const cityFound = citiesData.find(city => searchTextWords.some(word => city.toLowerCase() === word.toLowerCase()));
-            if (searchText === '' || cityFound) {
-                suggestionsDiv.style.display = 'none';
-                if (cityFound) {
-                    input.value = cityFound; // Remplir l'input avec le nom de la ville correspondant
-                }
-            } else {
-                suggestionsDiv.style.display = 'block';
-            }
-        }
-
-        // Écouter les événements de saisie dans l'input
-        input.addEventListener('input', function() {
-            const searchText = input.value; // Texte saisi dans l'input
-            updateSuggestions(searchText); // Mettre à jour les suggestions en fonction du texte saisi
-        });
-    })
-    .catch(error => console.error('Error loading cities data:', error));
-
-</script>
-</html>
+        <tr>
+            <td class="titre">
+            <label>Adresse e-mail</label>
+            </td>
+            <td class="value">
+            {{ form_widget(form.email, {'attr': {'required': false, 'placeholder': 'Email', 'class': 'form-control'}}) }}
+            {{ form_errors(form.email) }}
+            </td>
+        </tr>#}
+    </table>
+    <button class="register" type="submit" id="inscription-btn">S'inscrire</button>
+    <button class="login" onclick="window.location.href='{{ path("connexion") }}'">Vous possédez déjà un compte ? Connectez-vous</button>
+{{ form_end(form) }}
+{% endblock %}

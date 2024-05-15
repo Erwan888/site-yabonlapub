@@ -16,12 +16,12 @@
         <h3>Mécène</h3>
     </div></a>
     {% if app.user %}
-        <a href=""><div>
+        <a href="{{ path("app_logout") }}"><div>
             <img src={{asset('/img/bonhomme.png')}} alt="logo profil" width="50px"/>
             <h3>Particulier</h3>
         </div></a>
     {% else %}
-        <a href="{{ path("inscription")}}"><div>
+        <a href="{{ path("connexion") }}"><div>
             <img src={{asset('/img/bonhomme1.png')}} alt="logo connexion" width="50px"/>
             <h3>Connexion</h3>
         </div></a>

@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AssociationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+
 #[ORM\Entity(repositoryClass: AssociationRepository::class)]
 class Association
 {

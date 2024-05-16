@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/association_form_register.css') }}">
+{% endblock %}
+
+{% block title %}Association {% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="form-container">
+            {{ form_start(form) }}
+                {{ form_errors(form) }}
+
+                <div class="form-group">
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name) }}
+                    {{ form_errors(form.name) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.description) }}
+                    {{ form_widget(form.description) }}
+                    {{ form_errors(form.description) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.adress) }}
+                    {{ form_widget(form.adress) }}
+                    {{ form_errors(form.adress) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.postal_code) }}
+                    {{ form_widget(form.postal_code) }}
+                    {{ form_errors(form.postal_code) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.city) }}
+                    {{ form_widget(form.city) }}
+                    {{ form_errors(form.city) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.country) }}
+                    {{ form_widget(form.country) }}
+                    {{ form_errors(form.country) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.phone) }}
+                    {{ form_widget(form.phone) }}
+                    {{ form_errors(form.phone) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.email) }}
+                    {{ form_widget(form.email) }}
+                    {{ form_errors(form.email) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(form.url_website) }}
+                    {{ form_widget(form.url_website) }}
+                    {{ form_errors(form.url_website) }}
+                </div>
+
+                <button type="submit" id="creer_annonce" class="btn btn-primary">Créer</button>
+            {{ form_end(form) }}
+
+            <a href="{{ path('app_accueil') }}">
+                <button class="btn btn-secondary mt-2">Retourner à l'accueil</button>
+            </a>
+        </div>
+    </div>
+{% endblock %}

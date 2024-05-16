@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset("styles/home.css")}}">
+{% endblock %}
+
+{% block title %}Accueil - Yabonlapub{% endblock %}
+
+{% block body %}
+<div>
+    <p style="font-size: 80px; font-weight: bold; margin: 0;">{% trans %}Vous jouez, vous soutenez{% endtrans %}</p>
+</div>
+<img src="{{ asset('img/main.png') }}" alt="Logo" style="height: 18em; width: auto;">
+<div class="container">
+    <div class="box side-box" style="background-color: #58889C;">
+        <img src="{{ asset('img/manette.png') }}" alt="Logo" style="height: 6em; width: auto;">
+        <p style="margin-left: 10px; color: white;">
+            {% trans %}Particulier.<br>Vous désirez financer<br> vos associations favorites<br>sans débourser 1 centime{% endtrans %}
+            <br>
+            <a href="#" style="color:yellow; font-weight: bold;">{{ 'Entrez'|trans }}</a>
+        </p>
+    </div>
+    <div class="box middle-box" style="background-color: #D1B995;">
+        <img src="{{ asset('img/assoc.png') }}" alt="Logo" style="height: 6em; width: auto;">
+        <p style="margin-left: 10px; color: white;">
+            {% trans %}Association.<br>Vous désirez bénéficier<br> gratuitement<br>de la manne publicitaire<br>pour financer vos activités{% endtrans %}
+            <br>
+            <a href="#" style="color:yellow; font-weight: bold;">{{ 'Entrez'|trans }}</a>
+        </p>
+    </div>
+    <div class="box side-box" style="background-color: #1A2632;">
+        <img src="{{ asset('img/publicite.png') }}" alt="Logo" style="height: 6em; width: auto;">
+        <p style="margin-left: 10px; color: white;">
+            {% trans %}
+        Entreprise.<br>
+        Vous désirez être vue<br>
+        tout en bénéficiant<br>
+        de 40%% à 66%%<br>
+        de déductions d'impôts
+        {% endtrans %}
+            <br>
+            <a href="#" style="color:yellow; font-weight: bold;">{{ 'Entrez'|trans }}</a>
+        </p>
+    </div>
+</div>
+<footer style="margin-top: 20px;">
+    <div style="background-color: #E7820C; display: inline-block;">
+        <p><a href="#" style="color:black; font-weight: bold; text-decoration: none;">{{ 'SIMPLE VISITE'|trans }}</a></p>
+    </div>
+</footer>
+{% endblock %}

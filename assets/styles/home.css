@@ -1,0 +1,52 @@
+.container {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.box {
+    width: 20%;
+    margin: 0 75px;
+    padding: 15px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    /*position: relative; /* Définir une position relative pour la boîte */
+}
+
+.box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+/*.side-box {
+    filter: blur(2px);
+}
+
+.middle-box {
+    width: 30%;
+    position: relative;
+    z-index: 2;
+    transform: scale(1.2);
+}*/
+
+label{
+    display: block;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.accueil::-webkit-scrollbar {
+    width: 9px;
+}
+.accueil::-webkit-scrollbar-thumb {
+    background-color: #505050;
+    border-radius: 8px;
+}
+.accueil::-webkit-scrollbar-thumb:hover {
+    background-color: #1ed760;
+}

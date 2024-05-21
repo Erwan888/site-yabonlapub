@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset("styles/login.css")}}">
+{% endblock %}
+
+{% block title %}Connexion - Yabonlapub{% endblock %}
+
+{% block body %}
+<form method="post">
+    <h3>Se déconnecter</h3>
+
+    <p>Vous êtes connecté en tant que {{ app.user.login }}</p>
+
+    <a href="{{ path("app_logout") }}"><button class="login">Me déconnecter</button></a>
+</form>
+{% endblock %}

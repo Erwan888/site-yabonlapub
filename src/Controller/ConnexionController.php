@@ -14,7 +14,7 @@ class ConnexionController extends AbstractController
     public function contact(AuthenticationUtils $authenticationUtils): Response
     {
         $user = $this->getUser();
-        if ($user) return $this->redirectToRoute('app_accueil');
+        if ($user) return $this->redirectToRoute('connexion_statement');
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
@@ -31,5 +31,11 @@ class ConnexionController extends AbstractController
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');
+    }
+
+    #[Route('/statut', name: 'connexion_statement')]
+    public function statement(): Response
+    {
+        return $this->render('connexion/deconnexion.html.twig', []);
     }
 }

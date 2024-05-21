@@ -7,74 +7,76 @@
 {% block title %}Inscription - Yabonlapub{% endblock %}
 
 {% block body %}
-{{ form_start(form) }}
-    <h3>Créer un compte</h3>
-    {{ error }}
-    {% if error %}
-        <p>{{ error }}<p>
-    {% endif %}
-    <table>
-        <tr>
-            <td class="titre">
-            <label>Identifiant</label>
-            </td>
-            <td class="value">
-            {{ form_widget(form.login, {'attr': {'required': true, 'placeholder': 'Identifiant*', 'class': 'form-control'}}) }}
-            {{ form_errors(form.login) }}
-            </td>
-        </tr>
+<div class="content">
+    {{ form_start(form) }}
+        <h3>Créer un compte</h3>
+        {{ error }}
+        {% if error %}
+            <p>{{ error }}<p>
+        {% endif %}
+        <table>
+            <tr>
+                <td class="titre">
+                <label>Identifiant</label>
+                </td>
+                <td class="value">
+                {{ form_widget(form.login, {'attr': {'required': true, 'placeholder': 'Identifiant*', 'class': 'form-control'}}) }}
+                {{ form_errors(form.login) }}
+                </td>
+            </tr>
 
-        <tr>
-            <td class="titre">
-            <label>Mot de passe</label>
-            </td>
-            <td class="value">
-            {{ form_widget(form.plainPassword, {'attr': {'required': true, 'placeholder': 'Mot de passe*', 'class': 'form-control'}}) }}        
-            {{ form_errors(form.plainPassword) }}
-            </td>
-        </tr>
+            <tr>
+                <td class="titre">
+                <label>Mot de passe</label>
+                </td>
+                <td class="value">
+                {{ form_widget(form.plainPassword, {'attr': {'required': true, 'placeholder': 'Mot de passe*', 'class': 'form-control'}}) }}        
+                {{ form_errors(form.plainPassword) }}
+                </td>
+            </tr>
 
-        <tr>
-            <td class="titre">
-            <label>Confirmation du mot de passe</label>
-            </td>
-            <td class="value">
-            {{ form_widget(form.confirmPassword, {'attr': {'required': true, 'placeholder': 'Mot de passe*', 'class': 'form-control'}}) }}        
-            {{ form_errors(form.confirmPassword) }}
-            </td>
-        </tr>
+            <tr>
+                <td class="titre">
+                <label>Confirmation du mot de passe</label>
+                </td>
+                <td class="value">
+                {{ form_widget(form.confirmPassword, {'attr': {'required': true, 'placeholder': 'Mot de passe*', 'class': 'form-control'}}) }}        
+                {{ form_errors(form.confirmPassword) }}
+                </td>
+            </tr>
 
-        {#<tr>
-            <td class="titre">
-            <label>Nom</label>
-            </td>
-            <td class="value">
-            {{ form_widget(form.nom, {'attr': {'placeholder': 'Nom', 'class': 'form-control'}}) }}
-            {{ form_errors(form.nom) }}
-            </td>
-        </tr>
+            {#<tr>
+                <td class="titre">
+                <label>Nom</label>
+                </td>
+                <td class="value">
+                {{ form_widget(form.nom, {'attr': {'placeholder': 'Nom', 'class': 'form-control'}}) }}
+                {{ form_errors(form.nom) }}
+                </td>
+            </tr>
 
-        <tr>
-            <td class="titre">
-            <label>Prénom</label>
-            </td>
-            <td class="value">
-            {{ form_widget(form.prenom, {'attr': {'placeholder': 'Prénom', 'class': 'form-control'}}) }}
-            {{ form_errors(form.prenom) }}
-            </td>
-        </tr>
+            <tr>
+                <td class="titre">
+                <label>Prénom</label>
+                </td>
+                <td class="value">
+                {{ form_widget(form.prenom, {'attr': {'placeholder': 'Prénom', 'class': 'form-control'}}) }}
+                {{ form_errors(form.prenom) }}
+                </td>
+            </tr>
 
-        <tr>
-            <td class="titre">
-            <label>Adresse e-mail</label>
-            </td>
-            <td class="value">
-            {{ form_widget(form.email, {'attr': {'required': false, 'placeholder': 'Email', 'class': 'form-control'}}) }}
-            {{ form_errors(form.email) }}
-            </td>
-        </tr>#}
-    </table>
-    <button class="register" type="submit" id="inscription-btn">S'inscrire</button>
-    <button class="login" onclick="window.location.href='{{ path("connexion") }}'">Vous possédez déjà un compte ? Connectez-vous</button>
-{{ form_end(form) }}
+            <tr>
+                <td class="titre">
+                <label>Adresse e-mail</label>
+                </td>
+                <td class="value">
+                {{ form_widget(form.email, {'attr': {'required': false, 'placeholder': 'Email', 'class': 'form-control'}}) }}
+                {{ form_errors(form.email) }}
+                </td>
+            </tr>#}
+        </table>
+        <button class="register" type="submit" id="inscription-btn">S'inscrire</button>
+        <button class="login" onclick="window.location.href='{{ path("connexion") }}'">Vous possédez déjà un compte ? Connectez-vous</button>
+    {{ form_end(form) }}
+</div>
 {% endblock %}

@@ -7,34 +7,36 @@
 {% block title %}Connexion - Yabonlapub{% endblock %}
 
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error }}</div>
-    {% endif %}
-    <h3>Se connecter</h3>
+<div class="content">
+    <form method="post">
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
+        <h3>Se connecter</h3>
 
-    <table>
-        <tr>
-            <td class="titre">
-            <label>Identifiant</label>
-            </td>
-            <td class="value">
-            <input type="text" name="login" id="inputLogin" class="form-control" autocomplete="username" required placeholder="Identifiant">
-            </td>
-        </tr>
+        <table>
+            <tr>
+                <td class="titre">
+                <label>Identifiant</label>
+                </td>
+                <td class="value">
+                <input type="text" name="login" id="inputLogin" class="form-control" autocomplete="username" required placeholder="Identifiant">
+                </td>
+            </tr>
 
-        <tr>
-            <td class="titre">
-            <label>Mot de passe</label>
-            </td>
-            <td class="value">
-            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required placeholder="Mot de passe">
-            </td>
-        </tr>
-    </table>
+            <tr>
+                <td class="titre">
+                <label>Mot de passe</label>
+                </td>
+                <td class="value">
+                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required placeholder="Mot de passe">
+                </td>
+            </tr>
+        </table>
 
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-    <button class="login" type="submit">Se connecter</button>
-    <button class="register" onclick="window.location.href='{{ path("inscription") }}'">Vous ne possédez pas de compte ? Inscrivez-vous</button>
-</form>
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        <button class="login" type="submit">Se connecter</button>
+        <button class="register" onclick="window.location.href='{{ path("inscription") }}'">Vous ne possédez pas de compte ? Inscrivez-vous</button>
+    </form>
+</div>
 {% endblock %}

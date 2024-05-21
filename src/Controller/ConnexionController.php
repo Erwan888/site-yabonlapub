@@ -36,6 +36,8 @@ class ConnexionController extends AbstractController
     #[Route('/statut', name: 'connexion_statement')]
     public function statement(): Response
     {
-        return $this->render('connexion/deconnexion.html.twig', []);
+        if ($this->getUser())
+            return $this->render('connexion/deconnexion.html.twig', []);
+        else return $this->redirectToRoute('connexion');
     }
 }

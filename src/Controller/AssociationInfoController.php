@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AssociationInfoController extends AbstractController
 {
-    #[Route('/association/info', name: 'association_info')]
+    #[Route('/association/creation', name: 'association_info')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         // Création d'une nouvelle instance de l'entité Association

@@ -4,6 +4,7 @@ body {
     background-color: #f5f5f5;
     margin: 0;
     padding: 0;
+  
 }
 
 /* Container Styles */
@@ -15,7 +16,7 @@ body {
 }
 
 .form-container {
-    background-color: #fff;
+    background-color: #d9bbbb;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);

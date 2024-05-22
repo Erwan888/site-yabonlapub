@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes informations - Yabonlapub{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset("styles/modif.css")}}">
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="liste">
+        <h3>Mes informations</h3>
+        <button class="btn-connexion2" onclick="window.location.href='{{ path("app_user_coord") }}'">Consulter mon profil</button>
+        <button class="btn-connexion2" onclick="window.location.href='{{ path("app_modif_user_coord") }}'">Modifier mes coordonnées</button>
+        <button class="btn-connexion2" onclick="window.location.href='{{ path("app_modif_user_mdp") }}'">Modifier mon mot de passe</button>
+        <button class="btn-suppression" id="deleteAccountButton">Supprimer mon compte</button>
+
+        <script>
+            document.getElementById('deleteAccountButton').addEventListener('click', function() {
+                // Afficher une boîte de dialogue de confirmation
+                var confirmation = confirm('Êtes-vous sûr de vouloir supprimer votre compte ?');
+
+                // Si l'utilisateur confirme, rediriger vers la page de suppression du compte
+                if (confirmation) {
+                    window.location.href = '{{ path("app_delete_user") }}';
+                }
+            });
+        </script>
+        <button class="btn-connexion2" onclick="window.location.href='{{ path("app_accueil") }}'">Retourner à l'accueil</button>
+    </div>
+</div>
+{% endblock %}
+

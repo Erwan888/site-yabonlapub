@@ -5,7 +5,6 @@ body {
     font-family: "Trebuchet MS",sans-serif;
     color: #111;
     padding: 0.5%;
-    overflow: hidden;
     text-align: center;
 }
 
@@ -55,4 +54,18 @@ hr {
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, #000 0%, #222 100%);
+}
+
+::placeholder{
+    color: #e5e5e5;
+}
+::-webkit-scrollbar {
+    width: 9px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #505050;
+    border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #e17100;
 }

@@ -1,0 +1,13 @@
+{# templates/association_info/show.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ association.name }}{% endblock %}
+
+{% block body %}
+    <h1>{{ association.name }}</h1>
+    <p>{{ association.description }}</p>
+    <p><strong>Email:</strong> {{ association.email }}</p>
+    <p><strong>Phone:</strong> {{ association.phone }}</p>
+    <a href="{{ path('association_info') }}">Back to list</a>
+{% endblock %}

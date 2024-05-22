@@ -1,0 +1,19 @@
+{# templates/association_info/list.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Associations{% endblock %}
+
+{% block body %}
+    <h1>Associations</h1>
+
+    <ul>
+        {% for association in associations %}
+            <li>
+                <a href="{{ path('association_show', {id: association.id}) }}">
+                    {{ association.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

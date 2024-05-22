@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mes informations - Yabonlapub{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset("styles/login.css")}}">
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    {{ form_start(modifUserCoordForm) }}
+        <h3>Modifier mes informations</h3>
+        <p>Les champs avec * doivent obligatoirement être remplis.</p>
+        <strong>Login :</strong>
+        {{ form_widget(modifUserCoordForm.login, {'attr': {'placeholder': 'Login*', 'class': 'form-control'}}) }}
+        {{ form_errors(modifUserCoordForm.login) }}
+        <button class="register" type="submit">Sauvegarder mes coordonnées</button>
+        <button class="login" onclick="window.location.href='{{ path("app_modif_user") }}'">Retour</button>
+    {{ form_end(modifUserCoordForm) }}
+</div>
+{% endblock %}
+

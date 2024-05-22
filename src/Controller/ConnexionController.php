@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Form\Connexion;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\Response;

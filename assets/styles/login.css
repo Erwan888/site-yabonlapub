@@ -40,6 +40,12 @@ label{
     font-size: 16px;
     font-weight: 500;
 }
+
+strong {
+    display: block;
+    margin-top: 15px;
+}
+
 input{
     display: block;
     height: 50px;

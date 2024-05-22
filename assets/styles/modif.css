@@ -1,6 +1,5 @@
 button {
-    background-color: #1ed760;
-    border: 1px solid #1ed760;
+    background-color: #e17100;
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
     box-sizing: border-box;
@@ -13,30 +12,29 @@ button {
     text-align: center;
     width: 100%;
 }
-.liste{
-    height: 80%;
-    width: 400px;
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.liste {
+    width: 24%;
     background-color: rgba(255,255,255,0.13);
-    position: absolute;
-    transform: translate(-50%,-40%);
-    top: 50%;
-    left: 50%;
+    align-items: center;
     border-radius: 10px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    box-shadow: 0 0 30px rgba(8,7,16,0.6);
     padding: 50px 35px;
-    overflow: auto;
 }
 .liste *{
-    font-family: 'Trebuchet MS',sans-serif;
-    color: #ffffff;
-    letter-spacing: 0.5px;
     outline: none;
     border: none;
 }
 .liste h3{
-    margin-top: -20px;
+    margin-top: -30px;
     font-size: 32px;
     font-weight: 500;
     line-height: 42px;
@@ -59,18 +57,4 @@ input{
     margin-top: 8px;
     font-size: 14px;
     font-weight: 300;
-}
-::placeholder{
-    color: #e5e5e5;
-}
-
-.liste::-webkit-scrollbar {
-    width: 9px;
-}
-.liste::-webkit-scrollbar-thumb {
-    background-color: #505050;
-    border-radius: 8px;
-}
-.liste::-webkit-scrollbar-thumb:hover {
-    background-color: #1ed760;
 }

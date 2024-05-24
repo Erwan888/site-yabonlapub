@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ConnexionController extends AbstractController
 {
     #[Route('/connexion', name: 'connexion')]
-    public function contact(AuthenticationUtils $authenticationUtils): Response
+    public function connexion(AuthenticationUtils $authenticationUtils): Response
     {
         $user = $this->getUser();
         if ($user) return $this->redirectToRoute('connexion_statement');
@@ -23,7 +23,7 @@ class ConnexionController extends AbstractController
         if ($error)
             $error = 'Login ou mot de passe incorrect, veuillez réessayer';
 
-        return $this->render('connexion/index.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        return $this->render('connexion/connexion.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
     #[Route(path: '/logout', name: 'app_logout')]
@@ -33,10 +33,19 @@ class ConnexionController extends AbstractController
     }
 
     #[Route('/statut', name: 'connexion_statement')]
-    public function statement(): Response
+    public function statementUser(): Response
     {
+        $user = $this->getUser();
+        $typeCompte = "";
+        if ($user) {
+            if ($user instanceof \App\Entity\User) $typeCompte = "particulier";
+            elseif ($user instanceof \App\Entity\Association) $typeCompte = "association";
+            else $typeCompte = "mécène";
+        }
         if ($this->getUser())
-            return $this->render('connexion/deconnexion.html.twig', []);
+            return $this->render('connexion/deconnexion.html.twig', [
+                'typeCompte' => $typeCompte
+            ]);
         else return $this->redirectToRoute('connexion');
     }
 }

@@ -8,9 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-
-
+use Symfony\Component\Validator\Constraints\Regex;
 
 class Inscription extends AbstractType
 {
@@ -22,6 +20,18 @@ class Inscription extends AbstractType
                     new Length([
                         'max' => 180,
                         'maxMessage' => 'Votre login doit contenir moins de {{ limit }} caractères',
+                    ]),
+                ],
+            ])
+            ->add('email', null, [
+                'constraints' => [
+                    new Length([
+                        'max' => 255,
+                        'maxMessage' => 'Votre email doit contenir moins de {{ limit }} caractères',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
+                        'message' => 'Votre email ne respecte pas le format standard',
                     ]),
                 ],
             ])

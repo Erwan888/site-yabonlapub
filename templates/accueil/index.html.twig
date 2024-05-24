@@ -25,14 +25,14 @@
         <p style="margin-left: 10px; color: white;">
             {% trans %}Association.<br>Vous désirez bénéficier<br> gratuitement<br>de la manne publicitaire<br>pour financer vos activités{% endtrans %}
             <br>
-            <a href="#" style="color:yellow; font-weight: bold;">{{ 'Entrez'|trans }}</a>
+            <a href="{{ path("connexion") }}" style="color:yellow; font-weight: bold;">{{ 'Entrez'|trans }}</a>
         </p>
     </div>
     <div class="box" style="background-color: #496bc1;">
         <img src="{{ asset('img/publicite.png') }}" alt="Logo" style="height: 6em; width: auto;">
         <p style="margin-left: 10px; color: white;">
             {% trans %}Entreprise.<br>Vous désirez être vue<br>tout en bénéficiant<br>de 40%% à 66%%<br>de déductions d'impôts{% endtrans %}<br>
-            <a href="#" style="color:yellow; font-weight: bold;">{{ 'Entrez'|trans }}</a>
+            <a href="{{ path("connexion") }}" style="color:yellow; font-weight: bold;">{{ 'Entrez'|trans }}</a>
         </p>
     </div>
 </div>

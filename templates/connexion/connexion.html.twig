@@ -35,8 +35,7 @@
         </table>
 
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-        <button class="login" type="submit">Se connecter</button>
-        <button class="register" onclick="window.location.href='{{ path("inscription") }}'">Vous ne possédez pas de compte ? Inscrivez-vous</button>
+        <button class="login" type="submit" onclick="{{ path("app_accueil") }}">Se connecter</button>
     </form>
 </div>
 {% endblock %}

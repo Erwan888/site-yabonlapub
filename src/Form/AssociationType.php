@@ -6,22 +6,61 @@ use App\Entity\Association;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class AssociationType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-             // Ajouter des champs de formulaire avec la classe 'form-control' de Bootstrap pour le style
-            ->add('name', null, ['attr' => ['class' => 'form-control']])
-            ->add('description', null, ['attr' => ['class' => 'form-control']])
-            ->add('adress', null, ['attr' => ['class' => 'form-control']])
-            ->add('postal_code', null, ['attr' => ['class' => 'form-control']])
-            ->add('city', null, ['attr' => ['class' => 'form-control']])
-            ->add('country', null, ['attr' => ['class' => 'form-control']])
-            ->add('phone', null, ['attr' => ['class' => 'form-control']])
-            ->add('email', null, ['attr' => ['class' => 'form-control']])
-            ->add('url_website', null, ['attr' => ['class' => 'form-control']])
+            ->add('login', null, ['attr' => ['class' => 'form-control']])
+            ->add('email', null, [
+                'constraints' => [
+                    new Length([
+                        'max' => 255,
+                        'maxMessage' => 'Votre email doit contenir moins de {{ limit }} caractères',
+                    ]),
+                    new Regex([
+                        'pattern' => '/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/',
+                        'message' => 'Votre email ne respecte pas le format standard',
+                    ]),
+                ],
+            ])
+            ->add('plainPassword', PasswordType::class, [
+                'mapped' => false,
+                'attr' => ['autocomplete' => 'new-password'],
+                'required' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrez un mot de passe',
+                    ]),
+                    new Length([
+                        'min' => 4,
+                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
+                        'max' => 255,
+                        'maxMessage' => 'Votre mot de passe doit contenir moins de {{ limit }} caractères',
+                    ]),
+                ],
+            ])
+            ->add('confirmPassword', PasswordType::class, [
+                'mapped' => false,
+                'attr' => ['autocomplete' => 'new-password'],
+                'required' => false,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez entrez un mot de passe',
+                    ]),
+                    new Length([
+                        'min' => 4,
+                        'minMessage' => 'Votre mot de passe doit contenir au moins {{ limit }} caractères',
+                        'max' => 255,
+                        'maxMessage' => 'Votre mot de passe doit contenir moins de {{ limit }} caractères',
+                    ]),
+                ],
+            ])
         ;
     }
 

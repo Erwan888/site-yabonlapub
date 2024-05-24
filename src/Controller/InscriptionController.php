@@ -47,7 +47,8 @@ class InscriptionController extends AbstractController
             $error = "Mots de passe différents";
         }
 
-        return $this->render('connexion/inscription_user.html.twig', [
+        return $this->render('connexion/inscription.html.twig', [
+            'typeCompte' => "Particulier",
             'form' => $form,
             'error' => $error
         ]);
@@ -73,7 +74,7 @@ class InscriptionController extends AbstractController
                         $form->get('plainPassword')->getData()
                     )
                 );
-                // $user->setRoles(['ROLE_ASSO']);
+                $user->setRoles(['ROLE_ASSO']);
 
                 $entityManager->persist($user);
                 $entityManager->flush();
@@ -84,7 +85,8 @@ class InscriptionController extends AbstractController
             $error = "Mots de passe différents";
         }
 
-        return $this->render('connexion/inscription_asso.html.twig', [
+        return $this->render('connexion/inscription.html.twig', [
+            'typeCompte' => "Association",
             'form' => $form,
             'error' => $error
         ]);
@@ -110,7 +112,7 @@ class InscriptionController extends AbstractController
                         $form->get('plainPassword')->getData()
                     )
                 );
-                $user->setRoles(['ROLE_USER']);
+                $user->setRoles(['ROLE_MECENE']);
 
                 $entityManager->persist($user);
                 $entityManager->flush();
@@ -121,7 +123,8 @@ class InscriptionController extends AbstractController
             $error = "Mots de passe différents";
         }
 
-        return $this->render('connexion/inscription_mecene.html.twig', [
+        return $this->render('connexion/inscription.html.twig', [
+            'typeCompte' => "Mécène",
             'form' => $form,
             'error' => $error
         ]);

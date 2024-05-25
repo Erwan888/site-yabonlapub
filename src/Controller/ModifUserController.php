@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Association;
 use App\Form\ModifUserCoordType;
 use App\Form\ModifPasswordType;
+use Symfony\Component\Form\FormError;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,23 +18,27 @@ class ModifUserController extends AbstractController
     #[Route('/informations', name: 'app_modif_user')]
     public function index(): Response
     {
+        $user = $this->getUser();
+        if (!$user) return $this->redirectToRoute('connexion');
+        if ($user instanceof Association && !$user->precisions()) {
+            return $this->redirectToRoute('suite_inscription_asso');
+        }
         return $this->render('modif_user/index.html.twig', []);
     }
 
     #[Route('/informations/consulter', name: 'app_user_coord')]
     public function userCoord(): Response
     {
-        $user = $this->getUser();
-
-        return $this->render('modif_user/userCoord.html.twig', [
-            'user' => $user,
-        ]);
+        if (!$this->getUser()) return $this->redirectToRoute('connexion');
+        return $this->render('modif_user/userCoord.html.twig', []);
     }
 
     #[Route('/informations/modifier', name: 'app_modif_user_coord')]
     public function modifUserCoord(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
+        if (!$user) return $this->redirectToRoute('connexion');
+
         $form = $this->createForm(ModifUserCoordType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -51,6 +57,7 @@ class ModifUserController extends AbstractController
     public function modifUserMdp(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
+        if (!$user) return $this->redirectToRoute('connexion');
         $form = $this->createForm(ModifPasswordType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -89,10 +96,7 @@ class ModifUserController extends AbstractController
     public function deleteUser(EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
-
-        if (!$user) {
-            return $this->redirectToRoute('connexion');
-        }
+        if (!$user) return $this->redirectToRoute('connexion');
 
         $entityManager->remove($user);
         $entityManager->flush();

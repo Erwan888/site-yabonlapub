@@ -66,31 +66,7 @@ class UserInscriptionType extends AbstractType
                         'maxMessage' => 'Votre mot de passe doit contenir moins de {{ limit }} caractères',
                     ]),
                 ],
-            ])
-            /*->add('nom', null, [
-                'constraints' => [
-                    new Length([
-                        'max' => 100,
-                        'maxMessage' => 'Votre nom doit contenir moins de {{ limit }} caractères',
-                    ]),
-                ],
-            ])
-            ->add('prenom', null, [
-                'constraints' => [
-                    new Length([
-                        'max' => 100,
-                        'maxMessage' => 'Votre prénom doit contenir moins de {{ limit }} caractères',
-                    ]),
-                ],
-            ])
-            ->add('email', EmailType::class, [
-                'constraints' => [
-                    new Length([
-                        'max' => 255,
-                        'maxMessage' => 'Votre email doit contenir moins de {{ limit }} caractères',
-                    ]),
-                ],
-            ])*/;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

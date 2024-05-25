@@ -6,6 +6,7 @@ use App\Entity\Association;
 use App\Entity\Mecene;
 use App\Entity\User;
 use App\Form\AssociationInscriptionType;
+use App\Form\AssociationPrecisionType;
 use App\Form\MeceneInscriptionType;
 use App\Form\UserInscriptionType;
 use Doctrine\ORM\EntityManagerInterface;
@@ -127,6 +128,38 @@ class InscriptionController extends AbstractController
 
         return $this->render('connexion/inscription.html.twig', [
             'typeCompte' => "Mécène",
+            'form' => $form,
+            'error' => $error
+        ]);
+    }
+
+    #[Route('/inscription/association/precisions', name: 'suite_inscription_asso')]
+    public function suiteInscriptionAsso(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $user = $this->getUser();
+        if (!$user || !$user instanceof Association) return $this->redirectToRoute('connexion');
+
+        $form = $this->createForm(AssociationPrecisionType::class, $user);
+        $form->handleRequest($request);
+        $error = null;
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $form->get('name')->getData()? $user->setName($form->get('name')->getData()) : '';
+            $form->get('description')->getData() ? $user->setDescription($form->get('description')->getData()) : '';
+            $form->get('adress')->getData() ? $user->setAdress($form->get('adress')->getData()) : '';
+            $form->get('postal_code')->getData() ? $user->setPostalCode($form->get('postal_code')->getData()) : '';
+            $form->get('city')->getData() ? $user->setCity($form->get('city')->getData()) : '';
+            $form->get('country')->getData() ? $user->setCountry($form->get('country')->getData()) : '';
+            $form->get('phone')->getData() ? $user->setPhone($form->get('phone')->getData()) : '';
+            $form->get('phone')->getData() ? $user->setUrlWebsite($form->get('phone')->getData()) : '';
+
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_user_coord');
+        }
+
+        return $this->render('connexion/asso_precision.html.twig', [
             'form' => $form,
             'error' => $error
         ]);

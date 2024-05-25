@@ -2,12 +2,11 @@
 
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\Compte;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Validator\Constraints\Regex;
 
 class ModifUserCoordType extends AbstractType
 {
@@ -27,7 +26,7 @@ class ModifUserCoordType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Compte::class,
         ]);
     }
 }

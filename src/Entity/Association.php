@@ -127,4 +127,11 @@ class Association extends Compte
 
         return $this;
     }
+
+    public function precisions(): bool {
+        if ($this->getName() || $this->getDescription() || $this->getAdress() || $this->getPostalCode() ||
+            $this->getCity() || $this->getCountry() || $this->getPhone() || $this->getUrlWebsite())
+            return true;
+        else return false;
+    }
 }

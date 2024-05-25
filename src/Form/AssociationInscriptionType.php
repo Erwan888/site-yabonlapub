@@ -1,28 +1,22 @@
 <?php
+
 namespace App\Form;
 
-use App\Entity\User;
+use App\Entity\Association;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Validator\Constraints\Regex;
 
-class Inscription extends AbstractType
+class AssociationInscriptionType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('login', null, [
-                'constraints' => [
-                    new Length([
-                        'max' => 180,
-                        'maxMessage' => 'Votre login doit contenir moins de {{ limit }} caractères',
-                    ]),
-                ],
-            ])
+            ->add('login', null, ['attr' => ['class' => 'form-control']])
             ->add('email', null, [
                 'constraints' => [
                     new Length([
@@ -67,36 +61,14 @@ class Inscription extends AbstractType
                     ]),
                 ],
             ])
-            /*->add('nom', null, [
-                'constraints' => [
-                    new Length([
-                        'max' => 100,
-                        'maxMessage' => 'Votre nom doit contenir moins de {{ limit }} caractères',
-                    ]),
-                ],
-            ])
-            ->add('prenom', null, [
-                'constraints' => [
-                    new Length([
-                        'max' => 100,
-                        'maxMessage' => 'Votre prénom doit contenir moins de {{ limit }} caractères',
-                    ]),
-                ],
-            ])
-            ->add('email', EmailType::class, [
-                'constraints' => [
-                    new Length([
-                        'max' => 255,
-                        'maxMessage' => 'Votre email doit contenir moins de {{ limit }} caractères',
-                    ]),
-                ],
-            ])*/;
+        ;
     }
 
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => User::class,
+            'data_class' => Association::class,
         ]);
     }
+    
 }

@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 #[ORM\Entity(repositoryClass: CompteRepository::class)]
 #[ORM\InheritanceType("JOINED")]
 #[ORM\DiscriminatorColumn(name: 'type', type: 'string')]
-#[ORM\DiscriminatorMap(['compte' => Compte::class, 'utilisateur' => User::class, 'administrateur' => Association::class])]
+#[ORM\DiscriminatorMap(['compte' => Compte::class, 'utilisateur' => User::class, 'association' => Association::class, 'mecene' => Mecene::class])]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_LOGIN', fields: ['login'])]
 #[UniqueEntity(fields: ['login'], message: 'Un compte avec ce login existe déjà')]
 abstract class Compte implements UserInterface, PasswordAuthenticatedUserInterface

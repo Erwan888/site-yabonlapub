@@ -3,9 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Association;
+use App\Entity\Mecene;
 use App\Entity\User;
-use App\Form\AssociationType;
-use App\Form\Inscription;
+use App\Form\AssociationInscriptionType;
+use App\Form\MeceneInscriptionType;
+use App\Form\UserInscriptionType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +25,7 @@ class InscriptionController extends AbstractController
         if ($user) return $this->redirectToRoute('connexion_statement');
 
         $user = new User();
-        $form = $this->createForm(Inscription::class, $user);
+        $form = $this->createForm(UserInscriptionType::class, $user);
         $form->handleRequest($request);
         $error = null;
 
@@ -61,7 +63,7 @@ class InscriptionController extends AbstractController
         if ($user) return $this->redirectToRoute('connexion_statement');
 
         $user = new Association();
-        $form = $this->createForm(AssociationType::class, $user);
+        $form = $this->createForm(AssociationInscriptionType::class, $user);
         $form->handleRequest($request);
         $error = null;
 
@@ -98,8 +100,8 @@ class InscriptionController extends AbstractController
         $user = $this->getUser();
         if ($user) return $this->redirectToRoute('connexion_statement');
 
-        $user = new User();
-        $form = $this->createForm(Inscription::class, $user);
+        $user = new Mecene();
+        $form = $this->createForm(MeceneInscriptionType::class, $user);
         $form->handleRequest($request);
         $error = null;
 

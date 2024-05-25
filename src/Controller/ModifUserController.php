@@ -91,7 +91,7 @@ class ModifUserController extends AbstractController
         $user = $this->getUser();
 
         if (!$user) {
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('connexion');
         }
 
         $entityManager->remove($user);
@@ -99,6 +99,6 @@ class ModifUserController extends AbstractController
 
         $this->container->get('security.token_storage')->setToken(null);
                 
-        return $this->redirectToRoute('app_home_page');
+        return $this->redirectToRoute('app_accueil');
     }
 }

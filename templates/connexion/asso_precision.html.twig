@@ -1,0 +1,102 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset("styles/login.css")}}">
+{% endblock %}
+
+{% block title %}Précisions - Yabonlapub{% endblock %}
+
+{% block body %}
+<div class="content">
+    {{ form_start(form) }}
+        <h3>Précisez vos informations - Association {{app.user.name}}</h3>
+        {{ error }}
+        {% if error %}
+            <p>{{ error }}<p>
+        {% endif %}
+        <table>
+            <tr>
+                <td class="titre">
+                <label>Nom</label>
+                </td>
+                <td class="value">
+                {{ form_widget(form.name, {'attr': {'required': false, 'placeholder': 'Identifiant', 'class': 'form-control'}}) }}
+                {{ form_errors(form.name) }}
+                </td>
+            </tr>
+
+            <tr>
+                <td class="titre">
+                <label>Description</label>
+                </td>
+                <td class="value">
+                {{ form_widget(form.description, {'attr': {'required': false, 'placeholder': 'Email', 'class': 'form-control'}}) }}
+                {{ form_errors(form.description) }}
+                </td>
+            </tr>
+
+            <tr>
+                <td class="titre">
+                <label>Adresse</label>
+                </td>
+                <td class="value">
+                {{ form_widget(form.adress, {'attr': {'required': false, 'placeholder': 'Adresse', 'class': 'form-control'}}) }}        
+                {{ form_errors(form.adress) }}
+                </td>
+            </tr>
+
+            <tr>
+                <td class="titre">
+                <label>Code postal</label>
+                </td>
+                <td class="value">
+                {{ form_widget(form.postal_code, {'attr': {'required': false, 'placeholder': 'Code postal', 'class': 'form-control'}}) }}        
+                {{ form_errors(form.postal_code) }}
+                </td>
+            </tr>
+
+            <tr>
+                <td class="titre">
+                <label>Ville</label>
+                </td>
+                <td class="value">
+                {{ form_widget(form.city, {'attr': {'required': false, 'placeholder': 'Ville', 'class': 'form-control'}}) }}        
+                {{ form_errors(form.city) }}
+                </td>
+            </tr>
+
+            <tr>
+                <td class="titre">
+                <label>Pays</label>
+                </td>
+                <td class="value">
+                {{ form_widget(form.country, {'attr': {'required': false, 'placeholder': 'Pays', 'class': 'form-control'}}) }}        
+                {{ form_errors(form.country) }}
+                </td>
+            </tr>
+
+            <tr>
+                <td class="titre">
+                <label>Numéro de téléphone</label>
+                </td>
+                <td class="value">
+                {{ form_widget(form.phone, {'attr': {'required': false, 'placeholder': 'Téléphone', 'class': 'form-control'}}) }}        
+                {{ form_errors(form.phone) }}
+                </td>
+            </tr>
+
+            <tr>
+                <td class="titre">
+                <label>Lien de votre site web</label>
+                </td>
+                <td class="value">
+                {{ form_widget(form.url_website, {'attr': {'required': false, 'placeholder': 'Lien', 'class': 'form-control'}}) }}        
+                {{ form_errors(form.url_website) }}
+                </td>
+            </tr>
+        </table>
+        <button class="register" type="submit" id="inscription-btn">Confirmer</button>
+        <button class="login" onclick="window.location.href='{{ path("connexion") }}'">Passer pour l'instant</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

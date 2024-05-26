@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset("styles/login.css")}}">
+{% endblock %}
+
+{% block title %}Inscription - Yabonlapub{% endblock %}
+
+{% block body %}
+<div class="content">
+    <form>
+        <h3>Choisissez le type de compte à créer :</h3>
+        <button class="register" onclick="window.location.href='{{ path('inscription_asso') }}'">Association</button>
+        <button class="register" onclick="window.location.href='{{ path('inscription_mecene') }}'">Mécène</button>
+        <button class="register" onclick="window.location.href='{{ path('inscription_user') }}'">Particulier</button>
+        <button class="login" onclick="window.location.href='{{ path('connexion') }}'">Vous possédez déjà un compte ? Connectez-vous</button>
+    </form>
+</div>
+{% endblock %}

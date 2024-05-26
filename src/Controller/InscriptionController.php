@@ -19,6 +19,15 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class InscriptionController extends AbstractController
 {
+    #[Route('/inscription', name: 'inscription')]
+    public function inscription(): Response
+    {
+        $user = $this->getUser();
+        if ($user) return $this->redirectToRoute('connexion_statement');
+
+        return $this->render('connexion/menu_inscription.html.twig', []);
+    }
+
     #[Route('/inscription/particulier', name: 'inscription_user')]
     public function inscriptionUser(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {

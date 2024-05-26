@@ -15,6 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Form\FormError;
 
 
 class InscriptionController extends AbstractController
@@ -75,7 +76,7 @@ class InscriptionController extends AbstractController
         $user = new Association();
         $form = $this->createForm(AssociationInscriptionType::class, $user);
         $form->handleRequest($request);
-        $error = null;
+        $error = "test";
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('plainPassword')->getData() === $form->get('confirmPassword')->getData()) {
@@ -94,8 +95,15 @@ class InscriptionController extends AbstractController
                 return $this->redirectToRoute('connexion');
             }
 
-            $error = "Mots de passe différents";
+            $form->get('plainPassword')->addError(new FormError('Les mots de passe sont différents.'));
+
+            return $this->render('connexion/inscription.html.twig', [
+                'typeCompte' => "Association",
+                'form' => $form
+            ]);
         }
+
+        $error = $error . " + 1 ";
 
         return $this->render('connexion/inscription.html.twig', [
             'typeCompte' => "Association",

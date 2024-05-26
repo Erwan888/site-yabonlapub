@@ -10,13 +10,48 @@
 <div class="content">
     {{ form_start(modifUserCoordForm) }}
         <h3>Modifier mes informations</h3>
-        <p>Les champs avec * doivent obligatoirement être remplis.</p>
-        <strong>Login :</strong>
-        {{ form_widget(modifUserCoordForm.login, {'attr': {'placeholder': 'Login*', 'class': 'form-control'}}) }}
-        {{ form_errors(modifUserCoordForm.login) }}
+        <table>
+            {% for item in modifUserCoordForm %}
+                {% if item.vars.label %}
+                    <tr>
+                        <td class="titre">
+                        <label><strong>{{ item.vars.label }} :</strong></label>
+                        </td>
+                        <td class="value">
+                        {{ form_widget(item, {'attr': {'required': false, 'placeholder': 'Non défini', 'class': 'form-control'}}) }}
+                        {{ form_errors(item) }}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            {#<tr>
+                <td class="titre">
+                <label><strong>Identifiant :</strong></label>
+                </td>
+                <td class="value">
+                {{ form_widget(modifUserCoordForm.login, {'attr': {'required': true, 'placeholder': 'Identifiant*', 'class': 'form-control'}}) }}
+                {{ form_errors(modifUserCoordForm.login) }}
+                </td>
+            </tr>
+            <tr>
+                <td class="titre">
+                <label><strong>Email :</strong></label>
+                </td>
+                <td class="value">
+                {{ form_widget(modifUserCoordForm.email, {'attr': {'required': true, 'placeholder': 'Email*', 'class': 'form-control'}}) }}
+                {{ form_errors(modifUserCoordForm.email) }}
+                </td>
+            </tr>#}
+        </table>
         <button class="register" type="submit">Sauvegarder mes coordonnées</button>
-        <button class="login" onclick="window.location.href='{{ path("app_modif_user") }}'">Retour</button>
+        <button class="login" id="returnButton" type="button">Retour</button>
     {{ form_end(modifUserCoordForm) }}
+
+    <script>
+        document.getElementById('returnButton').addEventListener('click', function() {
+            window.location.href = '{{ path("app_modif_user") }}';
+        });
+    </script>
 </div>
 {% endblock %}
 

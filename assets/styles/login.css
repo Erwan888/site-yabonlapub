@@ -80,8 +80,9 @@ input{
 }
 
 .titre {
-  width: 30%;
+    width: 30%;
+    text-align: right;
 }
 .value {
-  width: 70%;
+    width: 70%;
 }

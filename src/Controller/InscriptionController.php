@@ -5,10 +5,8 @@ namespace App\Controller;
 use App\Entity\Association;
 use App\Entity\Mecene;
 use App\Entity\User;
-use App\Form\AssociationInscriptionType;
+use App\Form\InscriptionType;
 use App\Form\AssociationPrecisionType;
-use App\Form\MeceneInscriptionType;
-use App\Form\UserInscriptionType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,7 +34,7 @@ class InscriptionController extends AbstractController
         if ($user) return $this->redirectToRoute('connexion_statement');
 
         $user = new User();
-        $form = $this->createForm(UserInscriptionType::class, $user);
+        $form = $this->createForm(InscriptionType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -71,7 +69,7 @@ class InscriptionController extends AbstractController
         if ($user) return $this->redirectToRoute('connexion_statement');
 
         $user = new Association();
-        $form = $this->createForm(AssociationInscriptionType::class, $user);
+        $form = $this->createForm(InscriptionType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -106,7 +104,7 @@ class InscriptionController extends AbstractController
         if ($user) return $this->redirectToRoute('connexion_statement');
 
         $user = new Mecene();
-        $form = $this->createForm(MeceneInscriptionType::class, $user);
+        $form = $this->createForm(InscriptionType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -151,7 +149,7 @@ class InscriptionController extends AbstractController
             $form->get('city')->getData() ? $user->setCity($form->get('city')->getData()) : '';
             $form->get('country')->getData() ? $user->setCountry($form->get('country')->getData()) : '';
             $form->get('phone')->getData() ? $user->setPhone($form->get('phone')->getData()) : '';
-            $form->get('phone')->getData() ? $user->setUrlWebsite($form->get('phone')->getData()) : '';
+            $form->get('url_website')->getData() ? $user->setUrlWebsite($form->get('url_website')->getData()) : '';
 
             $entityManager->persist($user);
             $entityManager->flush();

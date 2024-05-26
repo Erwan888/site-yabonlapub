@@ -1,22 +1,28 @@
 <?php
-
 namespace App\Form;
 
-use App\Entity\Association;
+use App\Entity\Compte;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Validator\Constraints\Regex;
 
-class AssociationInscriptionType extends AbstractType
+class InscriptionType extends AbstractType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options): void
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('login', null, ['attr' => ['class' => 'form-control']])
+            ->add('login', null, [
+                'constraints' => [
+                    new Length([
+                        'max' => 180,
+                        'maxMessage' => 'Votre login doit contenir moins de {{ limit }} caractères',
+                    ]),
+                ],
+            ])
             ->add('email', null, [
                 'constraints' => [
                     new Length([
@@ -60,15 +66,13 @@ class AssociationInscriptionType extends AbstractType
                         'maxMessage' => 'Votre mot de passe doit contenir moins de {{ limit }} caractères',
                     ]),
                 ],
-            ])
-        ;
+            ]);
     }
 
-    public function configureOptions(OptionsResolver $resolver): void
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Association::class,
+            'data_class' => Compte::class,
         ]);
     }
-    
 }

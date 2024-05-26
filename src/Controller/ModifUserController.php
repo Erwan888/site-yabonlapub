@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Association;
+use App\Entity\Mecene;
+use App\Entity\User;
+use App\Form\ModifAssoCoordType;
 use App\Form\ModifUserCoordType;
 use App\Form\ModifPasswordType;
 use Symfony\Component\Form\FormError;
@@ -39,13 +42,52 @@ class ModifUserController extends AbstractController
         $user = $this->getUser();
         if (!$user) return $this->redirectToRoute('connexion');
 
-        $form = $this->createForm(ModifUserCoordType::class, $user);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setLogin($form->get('login')->getData());
-            $entityManager->persist($user);
-            $entityManager->flush();
-            return $this->redirectToRoute('app_modif_user');
+        if ($user instanceof Association) {
+            $form = $this->createForm(ModifAssoCoordType::class, $user);
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $user->setLogin($form->get('login')->getData());
+                $user->setEmail($form->get('email')->getData());
+
+                $form->get('name')->getData()        ? $user->setName($form->get('name')->getData())              : '';
+                $form->get('description')->getData() ? $user->setDescription($form->get('description')->getData()): '';
+                $form->get('adress')->getData()      ? $user->setAdress($form->get('adress')->getData())          : '';
+                $form->get('postal_code')->getData() ? $user->setPostalCode($form->get('postal_code')->getData()) : '';
+                $form->get('city')->getData()        ? $user->setCity($form->get('city')->getData())              : '';
+                $form->get('country')->getData()     ? $user->setCountry($form->get('country')->getData())        : '';
+                $form->get('phone')->getData()       ? $user->setPhone($form->get('phone')->getData())            : '';
+                $form->get('url_website')->getData() ? $user->setUrlWebsite($form->get('url_website')->getData()) : '';
+
+                $entityManager->persist($user);
+                $entityManager->flush();
+                return $this->redirectToRoute('app_modif_user');
+            }
+        }
+
+        if ($user instanceof User) {
+            $form = $this->createForm(ModifUserCoordType::class, $user);
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $user->setLogin($form->get('login')->getData());
+                $user->setEmail($form->get('email')->getData());
+
+                $entityManager->persist($user);
+                $entityManager->flush();
+                return $this->redirectToRoute('app_modif_user');
+            }
+        }
+
+        if ($user instanceof Mecene) {
+            $form = $this->createForm(ModifUserCoordType::class, $user);
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $user->setLogin($form->get('login')->getData());
+                $user->setEmail($form->get('email')->getData());
+
+                $entityManager->persist($user);
+                $entityManager->flush();
+                return $this->redirectToRoute('app_modif_user');
+            }
         }
 
         return $this->render('modif_user/edit.html.twig', [

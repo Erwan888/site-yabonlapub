@@ -38,7 +38,7 @@ abstract class Compte implements UserInterface, PasswordAuthenticatedUserInterfa
      * @var list<string> The user roles
      */
     #[ORM\Column]
-    private array $roles = [];
+    protected array $roles = [];
 
     public function getId(): ?int
     {

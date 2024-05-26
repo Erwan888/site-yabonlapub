@@ -32,6 +32,10 @@ class Association extends Compte
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $url_website = null;
 
+    public function __construct() {
+        $this->roles = ['ROLE_ASSO'];
+    }
+
     public function getName(): ?string
     {
         return $this->name;

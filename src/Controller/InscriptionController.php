@@ -38,7 +38,6 @@ class InscriptionController extends AbstractController
         $user = new User();
         $form = $this->createForm(UserInscriptionType::class, $user);
         $form->handleRequest($request);
-        $error = null;
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('plainPassword')->getData() === $form->get('confirmPassword')->getData()) {
@@ -49,7 +48,6 @@ class InscriptionController extends AbstractController
                         $form->get('plainPassword')->getData()
                     )
                 );
-                $user->setRoles(['ROLE_USER']);
 
                 $entityManager->persist($user);
                 $entityManager->flush();
@@ -57,13 +55,12 @@ class InscriptionController extends AbstractController
                 return $this->redirectToRoute('connexion');
             }
 
-            $error = "Mots de passe différents";
+            $form->get('plainPassword')->addError(new FormError('Les mots de passe sont différents.'));
         }
 
         return $this->render('connexion/inscription.html.twig', [
             'typeCompte' => "Particulier",
-            'form' => $form,
-            'error' => $error
+            'form' => $form
         ]);
     }
 
@@ -76,7 +73,6 @@ class InscriptionController extends AbstractController
         $user = new Association();
         $form = $this->createForm(AssociationInscriptionType::class, $user);
         $form->handleRequest($request);
-        $error = "test";
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('plainPassword')->getData() === $form->get('confirmPassword')->getData()) {
@@ -87,7 +83,6 @@ class InscriptionController extends AbstractController
                         $form->get('plainPassword')->getData()
                     )
                 );
-                $user->setRoles(['ROLE_ASSO']);
 
                 $entityManager->persist($user);
                 $entityManager->flush();
@@ -96,19 +91,11 @@ class InscriptionController extends AbstractController
             }
 
             $form->get('plainPassword')->addError(new FormError('Les mots de passe sont différents.'));
-
-            return $this->render('connexion/inscription.html.twig', [
-                'typeCompte' => "Association",
-                'form' => $form
-            ]);
         }
-
-        $error = $error . " + 1 ";
 
         return $this->render('connexion/inscription.html.twig', [
             'typeCompte' => "Association",
-            'form' => $form,
-            'error' => $error
+            'form' => $form
         ]);
     }
 
@@ -121,7 +108,6 @@ class InscriptionController extends AbstractController
         $user = new Mecene();
         $form = $this->createForm(MeceneInscriptionType::class, $user);
         $form->handleRequest($request);
-        $error = null;
 
         if ($form->isSubmitted() && $form->isValid()) {
             if ($form->get('plainPassword')->getData() === $form->get('confirmPassword')->getData()) {
@@ -132,7 +118,6 @@ class InscriptionController extends AbstractController
                         $form->get('plainPassword')->getData()
                     )
                 );
-                $user->setRoles(['ROLE_MECENE']);
 
                 $entityManager->persist($user);
                 $entityManager->flush();
@@ -140,13 +125,12 @@ class InscriptionController extends AbstractController
                 return $this->redirectToRoute('connexion');
             }
 
-            $error = "Mots de passe différents";
+            $form->get('plainPassword')->addError(new FormError('Les mots de passe sont différents.'));
         }
 
         return $this->render('connexion/inscription.html.twig', [
             'typeCompte' => "Mécène",
-            'form' => $form,
-            'error' => $error
+            'form' => $form
         ]);
     }
 
@@ -158,7 +142,6 @@ class InscriptionController extends AbstractController
 
         $form = $this->createForm(AssociationPrecisionType::class, $user);
         $form->handleRequest($request);
-        $error = null;
 
         if ($form->isSubmitted() && $form->isValid()) {
             $form->get('name')->getData()? $user->setName($form->get('name')->getData()) : '';
@@ -177,8 +160,7 @@ class InscriptionController extends AbstractController
         }
 
         return $this->render('connexion/asso_precision.html.twig', [
-            'form' => $form,
-            'error' => $error
+            'form' => $form
         ]);
     }
 }

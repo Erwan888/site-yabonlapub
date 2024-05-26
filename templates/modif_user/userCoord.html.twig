@@ -16,6 +16,14 @@
         <div>
             <strong class="titre">Email:</strong> <p class="value">{{ app.user.email }}</p>
         </div>
+        
+        {% if is_granted("ROLE_PARTICULIER", app.user) %}
+            {% include './modif_user/sous-infos/user.html.twig' %}
+        {% elseif is_granted("ROLE_ASSO", app.user) %}
+            {% include './modif_user/sous-infos/asso.html.twig'%}
+        {% elseif is_granted("ROLE_MECENE", app.user) %}
+            {% include './modif_user/sous-infos/mecene.html.twig'%}
+        {% endif %}
         <button onclick="window.location.href='{{ path("app_modif_user") }}'">Retour</button>
     </div>
 </div>

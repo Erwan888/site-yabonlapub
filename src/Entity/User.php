@@ -7,4 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User extends Compte
-{}
+{
+    public function __construct() {
+        $this->roles = ['ROLE_PARTICULIER'];
+    }
+}

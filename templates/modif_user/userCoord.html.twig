@@ -10,7 +10,12 @@
 <div class="content">
     <div class="liste">
         <h3>Mon profil</h3>
-        <strong>Login:</strong> {{ app.user.login }}
+        <div>
+            <strong class="titre">Login:</strong> <p class="value">{{ app.user.login }}</p>
+        </div>
+        <div>
+            <strong class="titre">Email:</strong> <p class="value">{{ app.user.email }}</p>
+        </div>
         <button onclick="window.location.href='{{ path("app_modif_user") }}'">Retour</button>
     </div>
 </div>

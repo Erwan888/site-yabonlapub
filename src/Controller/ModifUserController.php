@@ -67,14 +67,14 @@ class ModifUserController extends AbstractController
             
             if (!$userPasswordHasher->isPasswordValid($user, $oldPassword)) {
                 $form->addError(new FormError('Ancien mot de passe incorrect'));
-                return $this->render('security/modifUserMdp.html.twig', [
+                return $this->render('modif_user/edit_password.html.twig', [
                     'modifPasswordForm' => $form
                 ]);
             }
             
             if ($newPassword !== $confirmPassword) {
                 $form->addError(new FormError('Les nouveaux mots de passe ne correspondent pas'));
-                return $this->render('security/modifUserMdp.html.twig', [
+                return $this->render('modif_user/edit_password.html.twig', [
                     'modifPasswordForm' => $form
                 ]);
             }

@@ -27,13 +27,6 @@ form h3{
     text-align: center;
 }
 
-.titre {
-  width: 30%;
-}
-.value {
-  width: 70%;
-}
-
 label{
     display: block;
     font-size: 16px;
@@ -84,4 +77,11 @@ input{
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.titre {
+  width: 30%;
+}
+.value {
+  width: 70%;
 }

@@ -31,6 +31,22 @@
                 <td class="value">
                 <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required placeholder="Mot de passe">
                 </td>
+                <td>
+                <img class="oeil" src={{asset('/img/oeil_barre.png')}} width="20px" onclick="togglePasswordVisibility()">
+                <script>
+                    function togglePasswordVisibility() {
+                        var passwordInput = document.getElementById('inputPassword');
+                        var togglePasswordButton = document.querySelector('.oeil');
+                        if (passwordInput.type === 'password') {
+                            passwordInput.type = 'text';
+                            togglePasswordButton.src = '{{asset('/img/oeil.png')}}';
+                        } else {
+                            passwordInput.type = 'password';
+                            togglePasswordButton.src = '{{asset('/img/oeil_barre.png')}}';
+                        }
+                    }
+                </script>
+                </td>
             </tr>
         </table>
 

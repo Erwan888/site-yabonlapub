@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choisissez votre association</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5; /* Couleur de fond */
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-around; /* Centrage horizontal des colonnes */
+            padding: 20px; /* Espacement extérieur */
+        }
+
+        .column {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .rectangle {
+            width: 300px; /* Largeur des rectangles */
+            background-color: #fff; /* Couleur de fond */
+            border: 1px solid #ddd; /* Bordure */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre douce */
+            border-radius: 8px; /* Coins arrondis */
+            margin-bottom: 20px; /* Espacement entre les rectangles */
+            padding: 20px; /* Espacement intérieur des rectangles */
+            box-sizing: border-box; /* Inclure les bordures et le remplissage dans la largeur et la hauteur */
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s; /* Transition pour la couleur de fond, l'ombre et la transformation */
+        }
+
+        .rectangle_centrale {
+            width: 350px; /* Largeur des rectangles */
+            background-color: #fff; /* Couleur de fond */
+            border: 1px solid #ddd; /* Bordure */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre douce */
+            border-radius: 8px; /* Coins arrondis */
+            margin-bottom: 20px; /* Espacement entre les rectangles */
+            padding: 20px; /* Espacement intérieur des rectangles */
+            box-sizing: border-box; /* Inclure les bordures et le remplissage dans la largeur et la hauteur */
+            transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s; /* Transition pour la couleur de fond, l'ombre et la transformation */
+        }
+
+        .rectangle:hover {
+            background-color: #f0f0f0; /* Couleur de fond au survol */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+            transform: scale(1.05); /* Mise à l'échelle au survol */
+        }
+
+        .rectangle img {
+            width: 100%; /* Largeur de l'image */
+            height: auto; /* Hauteur automatique pour maintenir les proportions */
+            border-radius: 8px; /* Coins arrondis pour l'image */
+        }
+
+        .rectangle h3 {
+            text-align: center; /* Centrage du titre */
+            margin-top: 0; /* Supprimer la marge supérieure par défaut */
+            margin-bottom: 10px; /* Espacement inférieur */
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333; /* Couleur du texte */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Ombre portée sur le texte */
+        }
+    </style>
+</head>
+<body>
+    <h1>Choisissez votre association</h1>
+    <div class="container">
+        <div class="column">
+            <h2>Section 1</h2>
+            <div class="rectangle">
+                <h3>Titre de l'image 1</h3>
+                <img src="https://via.placeholder.com/300" alt="Image 1">
+            </div>
+            <div class="rectangle">
+                <h3>Titre de l'image 2</h3>
+                <img src="https://via.placeholder.com/300" alt="Image 2">
+            </div>
+        </div>
+        <div class="column">
+            <h2>Section Centrale</h2>
+            <div class="rectangle_centrale">
+                <iframe id="sidactionFrame" src="https://www.sidaction.org/" frameborder="0" width="100%" height="400"></iframe>
+            </div>
+        </div>
+        <div class="column">
+            <h2>Section 2</h2>
+            <div class="rectangle">
+                <h3>Titre de l'image 3</h3>
+                <img src="https://via.placeholder.com/300" alt="Image 3">
+            </div>
+            <div class="rectangle">
+                <h3>Titre de l'image 4</h3>
+                <img src="https://via.placeholder.com/300" alt="Image 4">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

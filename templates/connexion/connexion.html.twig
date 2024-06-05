@@ -2,6 +2,30 @@
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{asset("styles/login.css")}}">
+    <style>
+    .forgot-password {
+        text-align: center; /* Centrer le texte */
+        margin-top: 20px; /* Espacement supérieur */
+    }
+
+    .forgot-password a {
+        color: #007bff; /* Couleur du lien */
+        text-decoration: none; /* Supprime le soulignement par défaut */
+        font-weight: bold; /* Met le texte en gras */
+        transition: color 0.3s, text-decoration 0.3s; /* Ajoute une transition pour les effets */
+    }
+
+    .forgot-password a:hover {
+        color: #0056b3; /* Change la couleur au survol */
+        text-decoration: underline; /* Ajoute un soulignement au survol */
+    }
+
+    .forgot-password a:focus {
+        outline: none; /* Supprime le contour par défaut */
+        color: #0056b3; /* Change la couleur au focus */
+        text-decoration: underline; /* Ajoute un soulignement au focus */
+    }
+</style>
 {% endblock %}
 
 {% block title %}Connexion - Yabonlapub{% endblock %}
@@ -50,9 +74,18 @@
             </tr>
         </table>
 
+        <div class="forgot-password">
+            <a href="{{ path("choixReinitialisation") }}">Mot de passe oublié ?</a>
+        </div>
         <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
         <button class="login" type="submit" onclick="{{ path("app_accueil") }}">Se connecter</button>
         <button class="register" onclick="window.location.href='{{ path("inscription") }}'">Vous ne possédez pas de compte ? Inscrivez-vous</button>
     </form>
 </div>
+
+
 {% endblock %}
+
+
+
+

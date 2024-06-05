@@ -23,7 +23,12 @@ class ConnexionController extends AbstractController
         if ($error)
             $error = 'Login ou mot de passe incorrect, veuillez réessayer';
 
-        return $this->render('connexion/connexion.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        // Render the page
+    $response = $this->render('connexion/connexion.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+
+
+
+    return $response;
     }
 
     #[Route(path: '/logout', name: 'app_logout')]

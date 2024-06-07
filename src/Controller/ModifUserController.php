@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Association;
+use App\Entity\Compte;
 use App\Entity\Mecene;
 use App\Entity\User;
 use App\Form\ModifAssoCoordType;
@@ -122,7 +123,7 @@ class ModifUserController extends AbstractController
             }
 
             $mdp = $userPasswordHasher->hashPassword($user, $form->get('newPassword')->getData());
-            $user->setPassword($mdp);
+            if ($user instanceof Compte) $user->setPassword($mdp);
             
             $entityManager->persist($user);
             $entityManager->flush();

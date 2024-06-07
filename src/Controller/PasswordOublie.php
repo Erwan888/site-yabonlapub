@@ -12,6 +12,10 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\RedirectController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Compte;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class PasswordOublie extends AbstractController
 {
@@ -66,17 +70,37 @@ public function processForgotPassword(Request $request, UserProviderInterface $u
 }
 
     #[Route('/reset-password/{token}', name: 'reset_password')]
-    public function resetPassword(Request $request, string $token, UserProviderInterface $userProvider, SessionInterface $session): Response
+    public function resetPassword(Request $request, string $token,ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher, UserProviderInterface $userProvider,EntityManagerInterface $entityManager, SessionInterface $session): Response
     {
         if ($request->isMethod('POST')) {
-            return $this->render("connexion/connexion.html.twig", [
-                'token' => $token,
-                'error' => null, // Passer l'erreur au template Twig
-            ]);
+            $email = $request->request->get('mail');
+            $newPassword = $request->request->get('new_password');
+
+            // Trouver l'utilisateur par email
+            $compte = $doctrine->getRepository(Compte::class)->findOneBy(['email' => $email]);
+
+
+            if (!$compte) {
+                return $this->render('connexion/reset_password.html.twig', [
+                    'token' => $token,
+                    'error' => 'Aucun compte trouvé pour cet email.',
+                ]);
+            }
+
+             // Encoder le nouveau mot de passe
+        $hashedPassword = $passwordHasher->hashPassword($compte, $newPassword);
+        $compte->setPassword($hashedPassword);
+
+        // Enregistrer les modifications
+        $entityManager->persist($compte);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('connexion', [
+            'error' => null, // Passer l'erreur au template Twig
+        ]);
         }
 
-        // Exemple : Afficher un formulaire pour saisir le nouveau mot de passe
-        return $this->render("connexion/reset_password.html.twig", [
+        return $this->render('connexion/reset_password.html.twig', [
             'token' => $token
         ]);
     }

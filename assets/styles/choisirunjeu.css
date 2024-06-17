@@ -1,0 +1,167 @@
+/* Style pour les colonnes */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5; /* Couleur de fond */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 84vh; /* Permet de remplir tout l'écran */
+}
+
+.row {
+    flex: 1; /* Ajuste la taille des lignes pour remplir l'espace disponible */
+    display: flex;
+}
+
+.column {
+    flex: 1;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative; /* Ajoutez cette ligne */
+}
+
+.choose-game {
+    position: absolute;
+    bottom: 20px;
+}
+
+/* Style pour le rectangle du jeu */
+.game-container {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Remplit toute la hauteur de la colonne */
+}
+
+/* Style pour les rectangles de droite */
+.right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.small-rectangle {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    width: 300px; /* Largeur ajustée */
+    height: 200px; /* Hauteur ajustée */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Position relative pour les rectangles */
+}
+
+.small-rectangle:hover {
+    background-color: #f0f0f0; /* Couleur de fond au survol */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombre plus prononcée au survol */
+    transform: scale(1.0); /* Mise à l'échelle au survol */
+}
+
+.rectangle-title {
+    font-size: 18px;
+    text-align: center;
+    position: absolute; /* Position absolue pour les titres */
+    top: 10px; /* Distance du haut du rectangle */
+    left: 0;
+    right: 0;
+}
+
+/* Style pour le pied de page */
+footer {
+    background-color: #333;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+    flex-shrink: 0; /* Empêche le pied de page de se réduire */
+}
+
+footer button {
+    padding: 10px 20px;
+    margin: 0 5px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#startGameButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+#startGameButton:hover {
+    background-color: #0056b3;
+}
+
+#startGameButton:active {
+    background-color: #004080;
+}
+
+#startGameButton:focus {
+    outline: none;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+}
+
+.search-input {
+    width: 300px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.search-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+.suggestion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 100%; /* Juste en dessous de la barre de recherche */
+    left: 50%; /* Centrer horizontalement */
+    cursor: pointer;
+    padding: 5px;
+    width: 300px; /* Même largeur que la barre de recherche */
+    height: 30px; /* Même hauteur que la barre de recherche */
+    box-sizing: border-box; /* Assurez-vous que le padding est inclus dans la largeur et la hauteur */
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+.suggestion:hover {
+    background-color: #eee;
+}
